@@ -1,0 +1,49 @@
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Cars</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%= link_to new_car_path, class: 'btn btn-primary' do %>
+    Создать новая машина
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+
+        <th>Марка</th>
+        <th>Модель</th>
+        <th>ГОС.номер</th>
+        <th>Месячная аренда</th>
+        <th>Посуточная аренда</th>
+            
+        <th colspan="2"></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cars.each do |car| %>
+        <%= content_tag :tr, id: dom_id(car), class: dom_class(car) do %>
+          
+          <td><%= car.make %></td>
+          <td><%= car.model %></td>
+          <td><%= car.plate %></td>
+          <td><%= car.monthly_rent %></td>
+          <td><%= car.daily_rent %></td>
+
+          <td><%= link_to 'Показать', car %></td>
+          <td><%= link_to 'Арендаторы', car_renters_path(car) %></td>
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

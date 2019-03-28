@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to car_renters_path(@car), class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Все арендаторы
+  <% end %>
+  <%= link_to edit_car_renter_path(@car, @renter), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Изменить арендатор
+  <% end %>
+  <h1>Show renter</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Имя:</dt>
+  <dd><%= @renter.first_name %></dd>
+
+  <dt>Фамилия:</dt>
+  <dd><%= @renter.last_name %></dd>
+
+  <dt>Телефон:</dt>
+  <dd><%= @renter.phone %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @renter.email %></dd>
+
+  <dt>Машина:</dt>
+  <dd><%= @renter.car.make %>&nbsp;&nbsp;<%= @renter.car.model %>&nbsp;&nbsp;<%= @renter.car.plate %></dd>
+
+</dl>

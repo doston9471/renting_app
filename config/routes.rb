@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :cars do 
+    resources :renters
+  end
   namespace :admin do
       resources :users
       resources :announcements

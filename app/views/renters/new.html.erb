@@ -1,0 +1,58 @@
+<h1>Создать новый арендатор</h1>
+
+<%#= render 'form', renter: @renter %>
+<%= form_for([@car, @renter], local: true) do |form| %>
+  <% if @renter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@renter.errors.count, "error") %> prohibited this renter from being saved:</h2>
+
+      <ul>
+      <% @renter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label "Имя" %>
+    <%= form.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Фамилия" %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Телефон" %>
+    <%= form.text_field :phone, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.hidden_field :car_id, :value => params[:car_id] %>
+    <%#= form.label :car_id %>
+    <%#= form.text_field :car_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if @renter.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Удалить', @renter, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit "Создать", class: 'btn btn-primary' %>
+
+    <% if @renter.persisted? %>
+      <%= link_to "Отменить", car_renter_path(@car, @renter), class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Отменить", car_renters_path(@car), class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

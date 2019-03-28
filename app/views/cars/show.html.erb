@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to cars_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Все Машины
+  <% end %>
+  <%= link_to edit_car_path(@car), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Изменить машины
+  <% end %>
+  <h1>Show car</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Марка:</dt>
+  <dd><%= @car.make %></dd>
+
+  <dt>Модель:</dt>
+  <dd><%= @car.model %></dd>
+
+  <dt>ГОС.номер:</dt>
+  <dd><%= @car.plate %></dd>
+
+  <dt>Месячная аренда:</dt>
+  <dd><%= @car.monthly_rent %></dd>
+
+  <dt>Посуточная аренда:</dt>
+  <dd><%= @car.daily_rent %></dd>
+
+</dl>
