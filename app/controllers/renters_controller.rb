@@ -12,6 +12,7 @@ class RentersController < ApplicationController
   # GET /renters/1.json
   def show
     @car = Car.find(params[:car_id])
+    @rentings = @renter.rentings.order("created_at DESC").last(7)
   end
 
   # GET /renters/new

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   end
   get '/payment/:car_id/:renter_id', to: 'rentings#payment', as: 'payment'
   post '/payment/:car_id/:renter_id', to: 'rentings#pay', as: 'pay'
+
+  get 'renter_report/:renter_id', to: 'rentings#renter_reports', as: 'renter_report'
+  get 'car_report/:car_id', to: 'rentings#car_reports', as: 'car_report'
   namespace :admin do
       resources :users
       resources :announcements

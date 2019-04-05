@@ -27,3 +27,35 @@
   <dd><%= @renter.car.make %>&nbsp;&nbsp;<%= @renter.car.model %>&nbsp;&nbsp;<%= @renter.car.plate %></dd>
 
 </dl>
+<%= link_to renter_report_path(@renter), class: 'btn btn-success' do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+  Показать все отчёты
+<% end %>
+<br><br>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+
+        <th>Расходы</th>
+        <th>Доходы</th>
+        <th>Дата</th>
+        <th>Итого</th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @rentings.each do |renting| %>
+        <%= content_tag :tr, id: dom_id(renting), class: dom_class(renting) do %>
+          
+          <td><%= renting.expense %></td>
+          <td><%= renting.income %></td>
+          <td><%= renting.payment_date %></td>
+          <td><%= renting.give_total %></td>
+
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

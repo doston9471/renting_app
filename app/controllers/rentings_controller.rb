@@ -19,6 +19,30 @@ class RentingsController < ApplicationController
     end
   end
 
+  def renter_reports
+    renter_id = params[:renter_id]
+    @renter = Renter.find(renter_id)
+    result = RenterReports.call(params: params, renter_id: renter_id)
+    if result.success?
+      @all_rentings = result.renter_rentings
+      @all_expenses = result.all_expenses
+      @all_incomes = result.all_incomes
+      @all_totals = result.all_totals
+    end
+  end
+
+  def car_reports
+    car_id = params[:car_id]
+    @car = Car.find(car_id)
+    result = CarReports.call(params: params, car_id: car_id)
+    if result.success?
+      @all_rentings = result.car_rentings
+      @all_expenses = result.all_expenses
+      @all_incomes = result.all_incomes
+      @all_totals = result.all_totals
+    end
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def renting_params

@@ -10,6 +10,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
+    @rentings = @car.rentings.order("created_at DESC").last(7)
   end
 
   # GET /cars/new
