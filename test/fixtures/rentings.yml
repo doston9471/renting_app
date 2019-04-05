@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expense: 9.99
+  income: 9.99
+  total: 9.99
+  payment_date: 2019-04-01 04:06:30
+  car: one
+  renter: one
+
+two:
+  expense: 9.99
+  income: 9.99
+  total: 9.99
+  payment_date: 2019-04-01 04:06:30
+  car: two
+  renter: two

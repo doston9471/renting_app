@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_112744) do
+ActiveRecord::Schema.define(version: 2019_03_31_220630) do
 
   create_table "announcements", force: :cascade do |t|
     t.datetime "published_at"
@@ -62,6 +62,19 @@ ActiveRecord::Schema.define(version: 2019_03_28_112744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_renters_on_car_id"
+  end
+
+  create_table "rentings", force: :cascade do |t|
+    t.decimal "expense"
+    t.decimal "income"
+    t.decimal "total"
+    t.datetime "payment_date"
+    t.integer "car_id"
+    t.integer "renter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_rentings_on_car_id"
+    t.index ["renter_id"], name: "index_rentings_on_renter_id"
   end
 
   create_table "services", force: :cascade do |t|

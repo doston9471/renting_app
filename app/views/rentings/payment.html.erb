@@ -1,0 +1,49 @@
+<%= form_with(model: @renting, :url => { :controller => "rentings", :action => "pay" }, local: true) do |form| %>
+  <% if @renting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@renting.errors.count, "error") %> prohibited this renting from being saved:</h2>
+
+      <ul>
+      <% @renting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2><%= @car.make %>&nbsp;&nbsp;<%= @car.model %></h2>
+  <h2><%= @renter.first_name %>&nbsp;&nbsp;<%= @renter.last_name %></h2>
+
+  <div class="form-group">
+    <%= form.label "Расход" %>
+    <%= form.text_field :expense, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Доход" %>
+    <%= form.text_field :income, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.hidden_field :car_id, :value => params[:car_id] %>
+    <%= form.hidden_field :renter_id, :value => params[:renter_id] %>
+    <%= form.hidden_field :payment_date, :value => Time.now %>
+    <%#= form.hidden_field :total, :value => 0.0 %>
+  </div>
+
+  <div class="form-group">
+    <% if @renting.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', @renting, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if @renting.persisted? %>
+      <%= link_to "Cancel", cars_path, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", car_renters_path(@car), class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
