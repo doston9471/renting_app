@@ -78,9 +78,12 @@ gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'whenever', require: false
 gem 'webpacker', '~> 4.0.1'
-# dependencies
-gem "interactor", "~> 3.0"
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
+
+# dependencies
+gem "interactor", "~> 3.0"
+gem 'axlsx_rails'

@@ -76,6 +76,17 @@ class RentersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def renter_params
-      params.require(:renter).permit(:first_name, :last_name, :phone, :email, :car_id)
+      params.require(:renter).permit(
+        :first_name,
+        :middle_name,
+        :last_name,
+        :phone,
+        :passport,
+        :address,
+        :registration,
+        :fact_address,
+        :email,
+        :deposit,
+        :car_id)
     end
 end

@@ -1,0 +1,59 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Комиссии") do |sheet|
+  sheet.add_row [
+    "Имя",
+    "Фамилия",
+    "Отчество",
+    "Телефон",
+    "Паспорт",
+    "Адрес",
+    "Прописка",
+    "Фактический адрес",
+    "Депозит",
+    "e-mail"
+    ]
+  sheet.add_row [
+    @renter.first_name,
+    @renter.last_name,
+    @renter.middle_name,
+    @renter.phone,
+    @renter.passport,
+    @renter.address,
+    @renter.registration,
+    @renter.fact_address,
+    @renter.deposit,
+    @renter.email
+    ]
+  sheet.add_row [
+    "Все расходы",
+    @all_expenses.to_f,
+    "Все доходы",
+    @all_incomes.to_f,
+    "Итого",
+    @all_totals.to_f
+    ]
+  sheet.add_row [
+    "Расходы",
+    "Доходы",
+    "Дата",
+    "Итого",
+    "Марка",
+    "Модель",
+    "ГОС.номер",
+    "Месячная аренда",
+    "Посуточная аренда"
+    ]
+  @all_rentings.each do |renting|
+    sheet.add_row [
+      renting.expense,
+      renting.income,
+      renting.payment_date,
+      renting.give_total,
+      renting.car.make,
+      renting.car.model,
+      renting.car.plate,
+      renting.car.monthly_rent,
+      renting.car.daily_rent
+      ]
+  end
+end

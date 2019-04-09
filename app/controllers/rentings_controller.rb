@@ -28,6 +28,13 @@ class RentingsController < ApplicationController
       @all_expenses = result.all_expenses
       @all_incomes = result.all_incomes
       @all_totals = result.all_totals
+      filename = "#{@renter.first_name}-#{@renter.last_name}-#{@renter.middle_name}-#{Time.now}.xlsx"
+      respond_to do |format|
+        format.html
+        format.xlsx {
+          response.headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
+        }
+      end
     end
   end
 
@@ -40,6 +47,13 @@ class RentingsController < ApplicationController
       @all_expenses = result.all_expenses
       @all_incomes = result.all_incomes
       @all_totals = result.all_totals
+      filename = "#{@car.make}-#{@car.model}-#{@car.plate}-#{Time.now}.xlsx"
+      respond_to do |format|
+        format.html
+        format.xlsx {
+          response.headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
+        }
+      end
     end
   end
 

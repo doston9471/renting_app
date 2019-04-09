@@ -19,6 +19,13 @@
   </div>
   <div class="col-md-3"></div>
 </div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <%= link_to 'Скачать отчёт как Excel', car_report_path(@car, format: :xlsx), class: 'btn btn-success btn-block' %>
+  </div>
+  <div class="col-md-3"></div>
+</div>
 <br>
 <br>
 <hr>
@@ -26,8 +33,8 @@
   <span class="badge" style="color: red; font-size: 17px">
     <strong><%= @car.make %>&nbsp;&nbsp;<%= @car.model %></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <strong>Все расходы : </strong><strong><%= @all_expenses.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <strong>Все доходы : </strong><strong><%= @all_incomes %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <strong>Итого : </strong><strong><%= @all_totals %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <strong>Все доходы : </strong><strong><%= @all_incomes.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <strong>Итого : </strong><strong><%= @all_totals.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
 </div>
 <div class="table-responsive">
