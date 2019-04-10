@@ -19,6 +19,23 @@ class RentingsController < ApplicationController
     end
   end
 
+  def reports
+    result = Reports.call(params: params)
+    if result.success?
+      @all_rentings = result.all_rentings
+      @all_expenses = result.all_expenses
+      @all_incomes = result.all_incomes
+      @all_totals = result.all_totals
+      filename = "Все-отчёты-#{Time.now}.xlsx"
+      respond_to do |format|
+        format.html
+        format.xlsx {
+          response.headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
+        }
+      end
+    end
+  end
+
   def renter_reports
     renter_id = params[:renter_id]
     @renter = Renter.find(renter_id)

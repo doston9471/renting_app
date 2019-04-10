@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <%= form_tag car_report_path, method: :get do %>
+    <%= form_tag reports_path, method: :get do %>
       <div class="form-group">
         <%= label_tag :from_date, 'Дата от', class: 'col-sm-2 control-label' %>
         <%= date_field_tag :from_date, params[:from_date], class: 'form-control' %>
@@ -22,7 +22,7 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <%= link_to 'Скачать отчёт как Excel', car_report_path(@car, format: :xlsx), class: 'btn btn-success btn-block' %>
+    <%= link_to 'Скачать отчёт как Excel', reports_path(format: :xlsx), class: 'btn btn-success btn-block' %>
   </div>
   <div class="col-md-3"></div>
 </div>
@@ -31,7 +31,6 @@
 <hr>
 <div class="table table-striped table-hover">
   <span class="badge" style="color: red; font-size: 17px">
-    <strong><%= @car.make %>&nbsp;&nbsp;<%= @car.model %></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <strong>Все расходы : </strong><strong><%= @all_expenses.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <strong>Все доходы : </strong><strong><%= @all_incomes.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <strong>Итого : </strong><strong><%= @all_totals.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,6 +45,7 @@
         <th>Доходы</th>
         <th>Дата</th>
         <th>Итого</th>
+        <th colspan="2">Машина</th>
         <th colspan="2">Арендатор</th>
         
       </tr>
@@ -59,8 +59,11 @@
           <td><%= renting.income %></td>
           <td><%= renting.payment_date %></td>
           <td><%= renting.give_total %></td>
+          <td><%= renting.car.make %>&nbsp;&nbsp;<%= renting.car.model %>&nbsp;&nbsp;<%= renting.car.plate %></td>
+          <td><%= link_to "Показать машина", renting.car, class: "btn btn-info" %></td>
           <td><%= renting.renter.first_name %>&nbsp;&nbsp;<%= renting.renter.last_name %>&nbsp;&nbsp;<%= renting.renter.middle_name %></td>
-          <td><%= renting.renter.phone %></td>
+          <td><%= link_to "Показать арендатор", car_renter_path(renting.car, renting.renter), class: "btn btn-primary" %></td>
+
         <% end %>
       <% end %>
     </tbody>

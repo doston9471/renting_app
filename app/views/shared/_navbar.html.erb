@@ -20,6 +20,7 @@
       <ul class="navbar-nav">
         <li class="nav-item"><%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
         <li class="nav-item"><%= link_to "Все Машины", cars_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Все Отчёты", reports_path, class: "nav-link" %></li>
         <% if user_signed_in? %>
 
         <li class="nav-item">

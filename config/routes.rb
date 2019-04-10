@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'renter_report/:renter_id', to: 'rentings#renter_reports', as: 'renter_report'
   get 'car_report/:car_id', to: 'rentings#car_reports', as: 'car_report'
+  get 'reports', to: 'rentings#reports', as: 'reports'
   namespace :admin do
       resources :users
       resources :announcements

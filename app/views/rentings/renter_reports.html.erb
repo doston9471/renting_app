@@ -33,8 +33,8 @@
   <span class="badge" style="color: red; font-size: 17px">
     <strong><%= @renter.first_name %>&nbsp;&nbsp;<%= @renter.last_name %>&nbsp;&nbsp;<%= @renter.phone %></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <strong>Все расходы : </strong><strong><%= @all_expenses.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <strong>Все доходы : </strong><strong><%= @all_incomes %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <strong>Итого : </strong><strong><%= @all_totals %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <strong>Все доходы : </strong><strong><%= @all_incomes.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <strong>Итого : </strong><strong><%= @all_totals.to_f %>&nbsp;сом</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
 </div>
 <div class="table-responsive">
