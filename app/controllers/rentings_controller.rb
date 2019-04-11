@@ -12,7 +12,11 @@ class RentingsController < ApplicationController
     @renting = Renting.new(renting_params)
     respond_to do |format|
       if @renting.save!
-        format.html { redirect_to car_renters_path(@car_id)}
+        result = StatusUpdate.call(renter: @renting.renter)
+        if result.success?
+          StatusUpdateJob.set(wait: 1.minutes).perform_later(result.renter)
+          format.html { redirect_to car_renters_path(@car_id)}
+        end
       else
         format.html { render :payment }
       end

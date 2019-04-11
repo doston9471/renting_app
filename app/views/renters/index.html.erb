@@ -31,14 +31,19 @@
     <tbody>
       <% @renters.each do |renter| %>
         <%= content_tag :tr, id: dom_id(renter), class: dom_class(renter) do %>
-          
-          <td><%= renter.first_name %></td>
-          <td><%= renter.last_name %></td>
-          <td><%= renter.phone %></td>
-          <td><%= renter.email %></td>
-          <td><%= renter.car.make %>&nbsp;&nbsp;<%= renter.car.model %></td>
-        
-        
+          <% if renter.status == "paid" %>
+            <td style="background-color: green;"><%= renter.first_name %></td>
+            <td style="background-color: green;"><%= renter.last_name %></td>
+            <td style="background-color: green;"><%= renter.phone %></td>
+            <td style="background-color: green;"><%= renter.email %></td>
+            <td style="background-color: green;"><%= renter.car.make %>&nbsp;&nbsp;<%= renter.car.model %></td>
+          <% else %>
+            <td style="background-color: red;"><%= renter.first_name %></td>
+            <td style="background-color: red;"><%= renter.last_name %></td>
+            <td style="background-color: red;"><%= renter.phone %></td>
+            <td style="background-color: red;"><%= renter.email %></td>
+            <td style="background-color: red;"><%= renter.car.make %>&nbsp;&nbsp;<%= renter.car.model %></td>
+          <% end %>
           <td><%= link_to 'Показать', car_renter_path(@car, renter) %></td>
           <td><%= link_to 'Pay', payment_path(renter.car.id, renter.id) %></td>
           

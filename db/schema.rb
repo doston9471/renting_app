@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_122918) do
+ActiveRecord::Schema.define(version: 2019_04_10_122819) do
 
   create_table "announcements", force: :cascade do |t|
     t.datetime "published_at"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_122918) do
     t.string "registration"
     t.string "fact_address"
     t.decimal "deposit"
+    t.integer "status", default: 0
     t.index ["car_id"], name: "index_renters_on_car_id"
   end
 
