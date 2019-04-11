@@ -14,7 +14,8 @@ class RentingsController < ApplicationController
       if @renting.save!
         result = StatusUpdate.call(renter: @renting.renter)
         if result.success?
-          StatusUpdateJob.set(wait: 1.minutes).perform_later(result.renter)
+          # StatusUpdateJob.set(wait: 24.hours).perform_later(result.renter)
+          # StatusUpdateJob.set(wait: 1.minutes).perform_later(result.renter)
           format.html { redirect_to car_renters_path(@car_id)}
         end
       else
